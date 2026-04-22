@@ -38,6 +38,7 @@ The agent MUST create a detailed plan for the requested task. The plan must achi
 
 ### Step 5: Reporting & Documentation
 - Report any repo-specific problems (legacy constraints, hidden coupling, etc.).
+- Update the plan's status in `docs_for_agents/impl_history/` to **"COMPLETED"**.
 - Update static documentation if needed (see Section 6).
 
 ---
@@ -45,15 +46,16 @@ The agent MUST create a detailed plan for the requested task. The plan must achi
 ## 3. PLAN FORMATTING REQUIREMENTS
 
 Every plan must include, at minimum:
-1. **The current problem(s):** Clear description of what needs to be fixed or added.
-2. **The current implementation(s):** How it is currently handled.
-3. **The proposed architecture:** High-level design of the solution.
-4. **The proposed implementation steps:** Detailed sequence of actions.
-5. **Potential risks, tradeoffs, and likely problems:** Honest assessment of the plan.
-6. **Summarized code-change outline:** Brief overview of the code modifications.
-7. **Expected affected files:** List of all files to be modified or created.
-8. **Git Strategy:** Evaluation of whether a dedicated branch is needed or if an existing branch should be used. Branch names must follow `prefix/branch-name`.
-9. **History Logging:** Instructions to save the approved plan in `docs_for_agents/impl_history`.
+1. **Status:** Set to **"PLANNED"** initially.
+2. **The current problem(s):** Clear description of what needs to be fixed or added.
+3. **The current implementation(s):** How it is currently handled.
+4. **The proposed architecture:** High-level design of the solution.
+5. **The proposed implementation steps:** Detailed sequence of actions.
+6. **Potential risks, tradeoffs, and likely problems:** Honest assessment of the plan.
+7. **Summarized code-change outline:** Brief overview of the code modifications.
+8. **Expected affected files:** List of all files to be modified or created.
+9. **Git Strategy:** Evaluation of whether a dedicated branch is needed or if an existing branch should be used. Branch names must follow `prefix/branch-name`.
+10. **History Logging:** Instructions to save the approved plan in `docs_for_agents/impl_history`.
 
 ---
 
