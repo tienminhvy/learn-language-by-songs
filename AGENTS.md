@@ -40,7 +40,7 @@ The agent MUST create a detailed plan for the requested task. The plan must achi
 
 ### Step 5: Reporting & Documentation
 - Report any repo-specific problems (legacy constraints, hidden coupling, etc.).
-- Update the plan's status in `docs_for_agents/impl_history/` to **"COMPLETED"**.
+- Update the plan's status in `docs_for_agents/impl_history/YYYY_MM/` to **"COMPLETED"**.
 - Update static documentation if needed (see Section 6).
 
 ---
@@ -57,7 +57,7 @@ Every plan must include, at minimum:
 7. **Summarized code-change outline:** Brief overview of the code modifications.
 8. **Expected affected files:** List of all files to be modified or created.
 9. **Git Strategy:** Evaluation of whether a dedicated branch is needed or if an existing branch should be used. Branch names must follow `prefix/branch-name`.
-10. **History Logging:** Instructions to save the approved plan in `docs_for_agents/impl_history`.
+10. **History Logging:** Instructions to save the approved plan in `docs_for_agents/impl_history/YYYY_MM/`.
 
 ---
 
