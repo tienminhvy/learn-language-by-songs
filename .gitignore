@@ -1,0 +1,16 @@
+
+.nx/installation
+.nx/cache
+.nx/workspace-data
+.nx/polygraph
+.claude/worktrees
+.claude/settings.local.json
+.angular
+
+__screenshots__/
+
+/generated/prisma
+
+node_modules
+
+.env
