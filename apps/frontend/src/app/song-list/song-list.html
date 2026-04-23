@@ -1,0 +1,37 @@
+<div class="p-4 max-w-md mx-auto">
+  <h1 class="text-2xl font-bold mb-4">My Songs</h1>
+
+  <div class="mb-6">
+    <input #urlInput type="text" placeholder="YouTube URL" class="w-full p-2 border rounded mb-2">
+    <button (click)="download(urlInput.value); urlInput.value=''" 
+            class="w-full bg-blue-500 text-white p-2 rounded"
+            [disabled]="loading">
+      {{ loading ? 'Processing...' : 'Download Song' }}
+    </button>
+  </div>
+
+  <div *ngIf="loading && songs.length === 0" class="text-center py-4">
+    <span class="animate-pulse">Loading songs...</span>
+  </div>
+
+  <div class="space-y-4">
+    <div *ngFor="let song of songs" class="flex items-center space-x-4 p-3 border rounded shadow-sm hover:bg-gray-50 transition-colors">
+      <img [src]="song.thumbnail" class="w-20 h-20 object-cover rounded shadow-inner" alt="Thumbnail">
+      <div class="flex-1 min-w-0">
+        <h3 class="font-semibold truncate">{{ song.title }}</h3>
+        <p class="text-sm text-gray-600 truncate">{{ song.artist }} • {{ song.duration | number:'1.0-0' }}s</p>
+        <div class="mt-2 flex items-center space-x-3">
+          <a [routerLink]="['/player', song.id]" class="text-blue-600 text-sm font-medium hover:underline">▶ Play</a>
+          <button *ngIf="song.lyrics.length === 0" (click)="fetchLyrics(song.id)" class="text-green-600 text-sm font-medium hover:underline" [disabled]="loading">
+            🎵 Fetch Lyrics
+          </button>
+          <span *ngIf="song.lyrics.length > 0" class="text-gray-400 text-xs italic">Lyrics ready</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && songs.length === 0" class="text-center py-10 text-gray-500">
+    No songs found. Enter a YouTube URL to get started!
+  </div>
+</div>

@@ -15,3 +15,47 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Song {
+  id          Int      @id @default(autoincrement())
+  title       String
+  artist      String?
+  youtubeUrl  String?  @unique
+  filePath    String?
+  fileType    String?  // "audio" or "video"
+  language    String   @default("ja")
+  duration    Int?     // in seconds
+  thumbnail   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  lyrics      Lyrics[]
+}
+
+model Lyrics {
+  id        Int         @id @default(autoincrement())
+  songId    Int
+  song      Song        @relation(fields: [songId], references: [id])
+  language  String      @default("ja")
+  source    String?     // "LRCLIB", "MANUAL"
+  lines     LyricLine[]
+  createdAt DateTime    @default(now())
+}
+
+model LyricLine {
+  id           Int                    @id @default(autoincrement())
+  lyricsId     Int
+  lyrics       Lyrics                 @relation(fields: [lyricsId], references: [id])
+  startTime    Float                  // In seconds
+  endTime      Float?                 // In seconds
+  text         String                 // Base text (Kanji + Kana)
+  phonetic     String?                // Furigana or phonetic guide
+  translations LyricLineTranslation[]
+}
+
+model LyricLineTranslation {
+  id       Int       @id @default(autoincrement())
+  lineId   Int
+  line     LyricLine @relation(fields: [lineId], references: [id])
+  language String
+  text     String
+}
