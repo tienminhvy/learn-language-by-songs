@@ -24,6 +24,8 @@ When tasked with an action, the agent MUST follow these steps in order:
 - Check for the existence of the `docs_for_agents` directory.
 - Create `docs_for_agents` (and its subdirectories) if they do not exist.
 - Review existing documentation in `docs_for_agents` to ensure information is up to date.
+- **Codebase Exploration:** Search the codebase to check if an implementation already exists that meets the task's requirements.
+    - If an existing implementation is found that meets the task, the agent MUST report this finding to the user and **WAIT for further instructions**, rather than proceeding with a new plan or stopping completely.
 
 ### Step 2: Comprehensive Planning
 The agent MUST create a detailed plan for the requested task. The plan must achieve the project goals and follow the strict formatting rules below.
