@@ -9,7 +9,7 @@ COPY package*.json ./
 RUN npm install --legacy-peer-deps
 COPY . .
 EXPOSE 4200
-CMD ["npx", "nx", "serve", "frontend", "--host=0.0.0.0", "--disable-host-check"]
+CMD ["npx", "nx", "serve", "frontend", "--host=0.0.0.0"]
 
 # BUILDER
 FROM base AS builder
