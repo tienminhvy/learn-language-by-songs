@@ -4,7 +4,7 @@ import Analyzer from 'kuroshiro-analyzer-kuromoji';
 
 @Injectable()
 export class ParserService implements OnModuleInit {
-  private kuroshiro: Kuroshiro;
+  private kuroshiro: any;
 
   async onModuleInit() {
     this.kuroshiro = new Kuroshiro();

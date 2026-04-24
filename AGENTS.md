@@ -121,6 +121,7 @@ When adding or changing user-visible features, workflows, or UI:
 
 ## 7. CONSTRAINTS & ANTI-PATTERNS (WHAT TO AVOID)
 
+- **NO Incomplete Code or Placeholders:** Never leave literal omission placeholders (like `...`, `// rest of code`, etc.) in source code. Code modifications must be complete, syntactically correct, and ready to compile.
 - **NO Unrequested Re-architecture:** Do not re-architect features without a specific request.
 - **NO Weakening Security:** Never weaken role checks or security protocols.
 - **NO Formatting Churn:** Avoid broad formatting-only changes.

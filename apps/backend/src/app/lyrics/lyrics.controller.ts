@@ -1,7 +1,10 @@
-import { Controller, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Post, Body, Param, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { LyricsService } from './lyrics.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { TranslateLyricsDto } from './dto/lyrics.dto';
 
 @Controller('lyrics')
+@UseGuards(JwtAuthGuard)
 export class LyricsController {
   constructor(private lyricsService: LyricsService) {}
 
@@ -11,7 +14,7 @@ export class LyricsController {
   }
 
   @Post('translate')
-  addTranslation(@Body() body: { lineId: number; language: string; text: string }) {
+  addTranslation(@Body() body: TranslateLyricsDto) {
     return this.lyricsService.addTranslation(body.lineId, body.language, body.text);
   }
 }

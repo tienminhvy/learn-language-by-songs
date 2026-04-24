@@ -20,8 +20,7 @@ import { ParserModule } from './parser/parser.module';
       serveRoot: '/audio',
     }),
     ThrottlerModule.forRoot([
-...
-
+      {
         ttl: 60000,
         limit: 10,
       },

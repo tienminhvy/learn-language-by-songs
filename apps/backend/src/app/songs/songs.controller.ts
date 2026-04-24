@@ -1,5 +1,7 @@
-import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe, UseGuards } from '@nestjs/common';
 import { SongsService } from './songs.service';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { DownloadSongDto } from './dto/song.dto';
 
 @Controller('songs')
 export class SongsController {
@@ -15,8 +17,9 @@ export class SongsController {
     return this.songsService.getSongById(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Post('download')
-  downloadSong(@Body() body: { url: string; language?: string }) {
+  downloadSong(@Body() body: DownloadSongDto) {
     return this.songsService.downloadSong(body.url, body.language);
   }
 }

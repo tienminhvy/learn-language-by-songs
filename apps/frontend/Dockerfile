@@ -19,12 +19,12 @@ COPY . .
 RUN npx nx build frontend --prod
 
 # PRODUCTION
-FROM nginx:stable-alpine AS production
+FROM nginxinc/nginx-unprivileged:alpine AS production
 # Copy build output to nginx path
 COPY --from=builder /usr/src/app/dist/apps/frontend/browser /usr/share/nginx/html
 # Copy custom nginx config if needed, or use default
 # RUN rm /etc/nginx/conf.d/default.conf
 # COPY apps/frontend/nginx.conf /etc/nginx/conf.d/
 
-EXPOSE 80
+EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]

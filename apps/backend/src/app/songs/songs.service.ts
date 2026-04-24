@@ -6,7 +6,7 @@ import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class SongsService implements OnModuleInit {
-  private ytDlp: YTDlpWrap;
+  private ytDlp: any;
   private readonly songsDir = path.resolve('apps/backend/assets/songs');
 
   constructor(private prisma: PrismaService) {}
