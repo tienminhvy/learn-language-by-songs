@@ -13,6 +13,7 @@ The goal of this repository is to help users learn any language they want throug
 ### Privacy & Security
 - **Top-Tier Security:** Privacy and security must be a primary consideration from the start of any implementation.
 - **Data Protection:** Never expose or compromise user data or API keys.
+- **No Database Exposure:** NEVER expose PostgreSQL (or any other database) ports to the host machine in Docker configurations. Database access should only be available within the Docker network.
 
 ---
 
