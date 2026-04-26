@@ -1,6 +1,7 @@
 # BASE
 FROM node:22-alpine AS base
 WORKDIR /usr/src/app
+RUN apk add --no-cache ffmpeg python3 yt-dlp
 RUN npm install -g nx
 
 # DEVELOPMENT

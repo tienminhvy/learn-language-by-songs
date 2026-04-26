@@ -12,17 +12,11 @@ export class SongsService implements OnModuleInit {
   constructor(private prisma: PrismaService) {}
 
   async onModuleInit() {
-    const binaryPath = path.resolve('apps/backend/assets/yt-dlp');
     if (!fs.existsSync(this.songsDir)) {
       fs.mkdirSync(this.songsDir, { recursive: true });
     }
     try {
-      if (!fs.existsSync(binaryPath)) {
-        console.log('Downloading yt-dlp binary...');
-        await YTDlpWrap.downloadFromGithub(binaryPath);
-        fs.chmodSync(binaryPath, '755');
-      }
-      this.ytDlp = new YTDlpWrap(binaryPath);
+      this.ytDlp = new YTDlpWrap('yt-dlp');
     } catch (error) {
       console.error('Failed to initialize yt-dlp:', error);
     }
