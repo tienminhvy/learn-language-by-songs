@@ -10,7 +10,7 @@ RUN npm install --legacy-peer-deps
 COPY . .
 RUN npx prisma generate --schema apps/backend/prisma/schema.prisma
 EXPOSE 3000
-CMD ["npx", "nx", "serve", "backend", "--host=0.0.0.0"]
+CMD ["sh", "-c", "npx prisma migrate deploy --schema apps/backend/prisma/schema.prisma && npx nx serve backend --host=0.0.0.0"]
 
 # BUILDER
 FROM base AS builder
